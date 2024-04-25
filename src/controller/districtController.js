@@ -120,17 +120,17 @@ exports.getConstituencybyDistrict = async (req, res) => {
 };
 
 exports.getassemblybyDistrict = async (req, res) => {
-  const { district, constituency } = req.query;
+  const { district, constituency, assembly } = req.query;
 
-  const districties = await District.findOne({ district: district }).populate({
+  const districties = await District.findOne({ district }).populate({
     path: "constituencies",
-    populate: "constituency",
+    match: { constituency },
   });
 
   const constituencies = await Constituency.findOne({
-    constituency: constituency,
-  }).populate({ path: "assembly", populate: "Assembly" });
-
+    constituency
+  }).populate({ path: "assembly", match: { assembly } });
+  console.log("hii");
   res.status(200).json({
     status: "success",
     message: "Assembly and constituencies got successfully",
@@ -138,3 +138,4 @@ exports.getassemblybyDistrict = async (req, res) => {
     constituencies,
   });
 };
+
