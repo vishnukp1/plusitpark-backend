@@ -12,5 +12,6 @@ const tryCatch = (controller)=>{
     }
 }
 
+
 module.exports=tryCatch
 
