@@ -130,7 +130,7 @@ exports.getassemblybyDistrict = async (req, res) => {
   const constituencies = await Constituency.findOne({
     constituency
   }).populate({ path: "assembly", match: { assembly } });
-  console.log("hii");
+ 
   res.status(200).json({
     status: "success",
     message: "Assembly and constituencies got successfully",
