@@ -18,6 +18,7 @@ exports.createDistrict = async (req, res) => {
 exports.updateDistrict = async (req, res) => {
   const { id } = req.params;
   const { district } = req.body;
+  console.log(typeof id,"ggg nnnn");
 
   const districts = await District.findByIdAndUpdate(
     id,
